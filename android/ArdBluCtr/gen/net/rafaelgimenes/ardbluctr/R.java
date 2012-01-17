@@ -49,8 +49,6 @@ public final class R {
          */
         public static final int button_connect=0x7f050008;
         public static final int button_scan=0x7f050003;
-        public static final int ch1_scale_default=0x7f050012;
-        public static final int ch2_scale_default=0x7f050013;
         public static final int none_found=0x7f050007;
         public static final int none_paired=0x7f050005;
         public static final int not_connected=0x7f05000d;
@@ -59,7 +57,6 @@ public final class R {
         public static final int status_label=0x7f05000e;
         public static final int status_off=0x7f05000f;
         public static final int status_on=0x7f050010;
-        public static final int timebase_default=0x7f050011;
         public static final int title_connected_to=0x7f05000a;
         public static final int title_connecting=0x7f05000b;
         public static final int title_not_connected=0x7f05000c;
