@@ -29,7 +29,7 @@
     
     <!--  BluetoothOscilloscope -->
     <string name="button_connect">Connect</string>
-    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Oscilloscope.</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving ….</string>
     <string name="title_connected_to">connected to: </string>
     <string name="title_connecting">connecting...</string>
     <string name="title_not_connected">not connected</string>
@@ -37,8 +37,5 @@
     <string name="status_label">Status</string>
     <string name="status_off">OFF</string>
     <string name="status_on">ON</string>
-    <string name="timebase_default">200us</string>
-    <string name="ch1_scale_default">200mV</string>
-    <string name="ch2_scale_default">500mV</string>
     
 </resources>
