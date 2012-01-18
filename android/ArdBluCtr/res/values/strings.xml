@@ -37,6 +37,6 @@
     <string name="status_label">Status</string>
     <string name="status_off">OFF</string>
     <string name="status_on">ON</string>
-    <string name="sobre">Projeto de demonstração de comunicação bluetooth com o Arduino, mais informações &gt; falecom@rafaelgimenes.net</string>
+    <string name="sobre">Projeto de demo de comunicação bluetooth com o Arduino, mais informações &gt; falecom@rafaelgimenes.net</string>
     
 </resources>
