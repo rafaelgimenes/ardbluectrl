@@ -16,6 +16,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,29 +39,14 @@ public class ArdBluCtrActivity extends Activity implements  Button.OnClickListen
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     
-	// bt-uart constants
-    private static final int MAX_SAMPLES = 640;
-    private static final int  MAX_LEVEL	= 240;
-    private static final int  DATA_START = (MAX_LEVEL + 1);
-    private static final int  DATA_END = (MAX_LEVEL + 2);
-    
-    private static final byte  REQ_DATA = 0x00;
-    
-    
-    // Run/Pause status
-    private boolean bReady = false;
     // receive data 
-    private int[] ch1_data = new int[MAX_SAMPLES/2];
-	private int[] ch2_data = new int[MAX_SAMPLES/2];
-    private int dataIndex=0, dataIndex1=0, dataIndex2=0;
-	private boolean bDataAvailable=false;
     
     // Layout Views
     private TextView mBTStatus;
     private Button mConnectButton;
     private ToggleButton run_buton;
     private Spinner spin;
-    
+    private EditText recebido;
   //  public WaveformView mWaveform = null;
     
     // Name of the connected device
@@ -96,6 +82,11 @@ public class ArdBluCtrActivity extends Activity implements  Button.OnClickListen
         ArrayAdapter<String> aa = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,items);
         aa.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spin.setAdapter(aa);
+       
+        //editDataRecebide
+        recebido = (EditText) findViewById(R.id.editText1);
+        
+        
         // Get local Bluetooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         
@@ -146,13 +137,9 @@ public class ArdBluCtrActivity extends Activity implements  Button.OnClickListen
     	switch (buttonID){
     	case R.id.tbtn_runtoggle :
     		if(run_buton.isChecked()){
-    			
     			//mBTStatus.setText(+""); 
-    			
     			sendMessage("!ON"+spin.getSelectedItem()+"&");
-    			bReady = true;
     		}else{
-    			bReady = false;
     			sendMessage("!OF"+spin.getSelectedItem()+"&");
     		}
     		break;
@@ -235,32 +222,19 @@ public class ArdBluCtrActivity extends Activity implements  Button.OnClickListen
     				break;
     			}
     			break;
-    		case MESSAGE_READ: // todo: implement receive data buffering
-    			byte[] readBuf = (byte[]) msg.obj;
-    			int data_length = msg.arg1;
-    			for(int x=0; x<data_length; x++){
-    				int raw = UByte(readBuf[x]);
-    				if( raw>MAX_LEVEL ){
-    					if( raw==DATA_START ){
-    						bDataAvailable = true;
-    						dataIndex = 0; dataIndex1=0; dataIndex2=0;
-    					}
-    					else if( (raw==DATA_END) || (dataIndex>=MAX_SAMPLES) ){
-    						bDataAvailable = false;
-                    		dataIndex = 0; dataIndex1=0; dataIndex2=0;
-                    		//mWaveform.set_data(ch1_data, ch2_data);
-                    		if(bReady){ // send "REQ_DATA" again
-                        		ArdBluCtrActivity.this.sendMessage( new String(new byte[] {REQ_DATA}) );
-                        	}
-                    		//break;
-    					}
-    				}
-    				else if( (bDataAvailable) && (dataIndex<(MAX_SAMPLES)) ){ // valid data
-    					if((dataIndex++)%2==0) ch1_data[dataIndex1++] = raw;	// even data
-    					else ch2_data[dataIndex2++] = raw;	// odd data
-    				}
-    			}
-    			break;
+    		case MESSAGE_READ: //recebendo mensagem
+    			 byte[] readBuf = (byte[]) msg.obj;
+                 // construct a string from the valid bytes in the buffer
+                 String readMessage = new String(readBuf, 0, msg.arg1);
+                 recebido.setText(readMessage);
+                 if(readMessage.length()>4){
+	                 if (readMessage.subSequence(1, 3).equals("ON")){
+	                	 run_buton.setChecked(true);
+	                 }else if (readMessage.subSequence(1, 3).equals("OF")){
+	                	 run_buton.setChecked(false);
+	                 }
+                 }
+                 break;
     		case MESSAGE_DEVICE_NAME:
     			// save the connected device's name
                 mConnectedDeviceName = msg.getData().getString(DEVICE_NAME);

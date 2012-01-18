@@ -43,12 +43,13 @@ void loop() {
     
     //agindo no PINO
     pinMode(pino,OUTPUT);
-    if(acao=="ON")
+    if(acao=="ON"){
       digitalWrite(pino,HIGH); 
-    else if (acao=="OF")
+    }else if (acao=="OF"){
       digitalWrite(pino,LOW); 
-    
-     
+    }
+     //mandando o retorno
+     Serial1.print("!"+acao+pino+"&");
   }
    //lendo da Seiral0 e mandando pro Bluetooth
   if (Serial.available()) {
