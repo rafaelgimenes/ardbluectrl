@@ -16,26 +16,27 @@
 
 <resources>
 
-    <string name="app_name">ArdBluCtr</string>
+    <string name="app_name">Arduino Bluetooth Control</string>
     
     <!--  DeviceListActivity -->
-    <string name="title_paired_devices">Paired Devices</string>
-    <string name="title_other_devices">Other Available Devices</string>
-    <string name="button_scan">Scan for devices</string>
-    <string name="select_device">select a device to connect</string>
-    <string name="none_paired">No devices have been paired</string>
-    <string name="scanning">scanning for devices...</string>
-    <string name="none_found">No devices found</string>
+    <string name="title_paired_devices">Dispositivos Emparelhados</string>
+    <string name="title_other_devices">Outros Dispositivos</string>
+    <string name="button_scan">Buscar </string>
+    <string name="select_device">Selecione o Dispositivo pra conectar</string>
+    <string name="none_paired">Sem dispositivos para emparelhar</string>
+    <string name="scanning">escaneando dispositivos</string>
+    <string name="none_found">Dipositivos não encontrado</string>
     
     <!--  BluetoothOscilloscope -->
-    <string name="button_connect">Connect</string>
-    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving ….</string>
-    <string name="title_connected_to">connected to: </string>
-    <string name="title_connecting">connecting...</string>
-    <string name="title_not_connected">not connected</string>
-    <string name="not_connected">You are not connected to a device</string>
+    <string name="button_connect">Conectar</string>
+    <string name="bt_not_enabled_leaving">Bluetooth desativado, saindo ...</string>
+    <string name="title_connected_to">conectado:</string>
+    <string name="title_connecting">conectando...</string>
+    <string name="title_not_connected">não conectado</string>
+    <string name="not_connected">Sem conexão</string>
     <string name="status_label">Status</string>
     <string name="status_off">OFF</string>
     <string name="status_on">ON</string>
+    <string name="sobre">Projeto de demonstração de comunicação bluetooth com o Arduino, mais informações &gt; falecom@rafaelgimenes.net</string>
     
 </resources>

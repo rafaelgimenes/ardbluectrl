@@ -26,12 +26,13 @@ public final class R {
         public static final int ToggleButton01=0x7f06000b;
         public static final int button_connect=0x7f060007;
         public static final int button_scan=0x7f060004;
+        public static final int editText1=0x7f06000c;
         public static final int new_devices=0x7f060003;
         public static final int paired_devices=0x7f060001;
         public static final int spinner1=0x7f060008;
         public static final int tableLayout1=0x7f060005;
         public static final int tbtn_runtoggle=0x7f06000a;
-        public static final int textView1=0x7f06000c;
+        public static final int textView1=0x7f06000d;
         public static final int title_new_devices=0x7f060002;
         public static final int title_paired_devices=0x7f060000;
         public static final int txt_appname=0x7f060006;
@@ -54,6 +55,7 @@ public final class R {
         public static final int not_connected=0x7f05000d;
         public static final int scanning=0x7f050006;
         public static final int select_device=0x7f050004;
+        public static final int sobre=0x7f050011;
         public static final int status_label=0x7f05000e;
         public static final int status_off=0x7f05000f;
         public static final int status_on=0x7f050010;
